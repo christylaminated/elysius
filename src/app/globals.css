@@ -1,26 +1,134 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --navy: #0a192f;
+    --navy-dark: #0a192f;
+    --navy-light: #112a4e;
+    --gold: #d4af37;
+    --gold-light: #e6c35c;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#0a192f] text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .wave-bg {
+    @apply absolute inset-0;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  .wave-line {
+    @apply absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(
+      ellipse at center,
+      var(--gold) 0%,
+      rgba(212, 175, 55, 0.1) 30%,
+      transparent 70%
+    );
+    animation: rotate 30s linear infinite;
+    transform-origin: center center;
+  }
+
+  .glass-card {
+    @apply bg-white/[0.03] backdrop-blur-lg border border-white/10 rounded-2xl p-8;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    @apply bg-white/[0.05] -translate-y-1;
+    border-color: rgba(212, 175, 55, 0.2);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+  }
+
+  .gold-glow {
+    @apply text-[#d4af37];
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-link {
+    @apply text-white/70 transition-colors duration-300 hover:text-white;
+  }
+
+  .button-primary {
+    @apply bg-gradient-to-r from-[#d4af37] to-[#e6c35c] text-[#0a192f] font-semibold px-6 py-3 rounded-lg shadow-lg transition-all duration-300;
+  }
+
+  .button-primary:hover {
+    @apply -translate-y-0.5 shadow-xl;
+  }
+
+  .input-field {
+    @apply bg-white/[0.03] border border-white/10 rounded-lg px-4 py-3 text-white transition-all duration-300;
+  }
+
+  .input-field::placeholder {
+    @apply text-white/50;
+  }
+
+  .input-field:focus {
+    @apply outline-none border-gold/20 ring-2 ring-gold/20;
+  }
+
+  .heading-1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight;
+  }
+
+  .heading-2 {
+    @apply text-3xl md:text-4xl font-bold mb-8 leading-tight;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-24 lg:py-32 px-4 md:px-8 lg:px-16;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg) scale(0.95);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+  to {
+    transform: rotate(360deg) scale(0.95);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
