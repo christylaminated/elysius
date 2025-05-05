@@ -106,12 +106,11 @@ export default function Home() {
               className="text-center max-w-4xl mx-auto"
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-                <span className="text-white">Recover</span>{' '}
-                <span className="text-white/60">Better</span>
+                <span className="text-white">Sleep deeper,</span>{' '}
+                <span className="text-white/60">stress less</span>
               </h1>
               <p className="text-lg md:text-xl text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Discover how Elysius's advanced neurotechnology can transform your sleep recovery, 
-                helping you achieve peak mental and physical performance.
+                By tuning your brain with real-time insights. Elysius reads your brainwaves via Muse and uses AI to guide your sleep and focus in real time.
               </p>
               <motion.button
                 onClick={() => {
@@ -136,9 +135,11 @@ export default function Home() {
         {/* The Breakdown Section */}
         <TheBreakdown />
         
+        {/* Elysius Difference Section (moved up) */}
+        <ElysiusDifference />
+        
         {/* Other Sections */}
         <InsightSection />
-        <ElysiusDifference />
         <PersonasSection />
         <ProductPreview />
         <Footer />

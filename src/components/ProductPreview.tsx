@@ -108,6 +108,9 @@ export default function ProductPreview() {
                     {isSubmitting ? 'Joining...' : 'Join Waitlist'}
                   </motion.button>
                 </div>
+                <p className="text-white/40 text-sm mt-2">
+                  Your email is safe with us. We'll never share it with anyone else.
+                </p>
                 {message && (
                   <motion.p
                     initial={{ opacity: 0, y: 10 }}
